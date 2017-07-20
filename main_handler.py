@@ -99,7 +99,7 @@ if __name__ == '__main__':
     vid2 = cv2.VideoCapture('vids/movie_original.mp4')
     vid3 = cv2.VideoCapture('vids/movie_scarrier.mp4')
 
-    status = 1
+    status = 0
 
     while(True):
         # Capture frame-by-frame
@@ -123,16 +123,16 @@ if __name__ == '__main__':
             print '\tpositive: %f\n\tneutral: %f\n\tnegative: %f' % (positive_sc, neutral_sc, negative_sc)
 
             if positive_sc > negative_sc:
-                status = min(status+1, 3)
+                status = min(status+1, 1)
             else:
-                status = max(status-1, 1)
+                status = max(status-1, -1)
         
         # Display the resulting frame
-        if status == 1:
+        if status == -1:
             cv2.imshow('frame', frame1)
-        elif status == 2:
+        elif status == 0:
             cv2.imshow('frame', frame2)
-        elif status == 3:
+        elif status == 1:
             cv2.imshow('frame', frame3)
         # cv2.imshow('frame', frame)
 
