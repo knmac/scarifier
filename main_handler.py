@@ -13,7 +13,7 @@ TO_EXTRACT = True  # FIXME: turn on or off
 VIDS_DIR = 'vids'
 FRAMES_DIR = 'frames'
 FPS = '1'
-DURATION = 3
+DURATION = 5
 
 
 def extract_frames(input_fn, output_dir):
@@ -28,6 +28,13 @@ def extract_frames(input_fn, output_dir):
     sp = Popen(cmd.split(' '), stdout=PIPE)
     sp.communicate()
     return
+
+
+def recog_visual_img(img_fn):
+    sp = Popen('./visual_api_handler.sh' + img_fn,
+            shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
+    out, err = sp.communicate()
+    return 
 
 
 def recog_facial_img(img_fn):
@@ -83,25 +90,30 @@ def scarify():
 
 if __name__ == '__main__':
     cap = cv2.VideoCapture(0)
+    cap.set(3, 320)
+    cap.set(4, 240)
     prev_time = time.time()
 
     while(True):
         # Capture frame-by-frame
         ret, frame = cap.read()
+        
+        # Display the resulting frame
+        cv2.imshow('frame', frame)
 
-        # recognize after a duration
+        # break event
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+        # recognizen facial expression after a duration
         if time.time() - prev_time >= DURATION:
             prev_time = time.time()
             img_fn = os.path.join(FRAMES_DIR, str(prev_time)+'.jpg')
             cv2.imwrite(img_fn, frame)
+
             positive_sc, neutral_sc, negative_sc = recog_facial_img(img_fn)
             print img_fn
             print '\tpositive: %f\n\tneutral: %f\n\tnegative: %f' % (positive_sc, neutral_sc, negative_sc)
-
-        # Display the resulting frame
-        cv2.imshow('frame', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
 
     cap.release()
     cv2.destroyAllWindows()
