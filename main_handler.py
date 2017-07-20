@@ -90,20 +90,23 @@ def scarify():
 
 
 if __name__ == '__main__':
-    # recog_visual_img('frames/frame_00067.jpg')
-    # exit()
-
     cap = cv2.VideoCapture(0)
-    cap.set(3, 320)
-    cap.set(4, 240)
+    # cap.set(3, 320)
+    # cap.set(4, 240)
     prev_time = time.time()
+    
+    vid1 = cv2.VideoCapture('vids/movie_lighter.mp4')
+    vid2 = cv2.VideoCapture('vids/movie_original.mp4')
+    vid3 = cv2.VideoCapture('vids/movie_scarrier.mp4')
+
+    status = 1
 
     while(True):
         # Capture frame-by-frame
         ret, frame = cap.read()
-        
-        # Display the resulting frame
-        cv2.imshow('frame', frame)
+        ret1, frame1 = vid1.read()
+        ret2, frame2 = vid2.read()
+        ret3, frame3 = vid3.read()
 
         # break event
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -118,6 +121,20 @@ if __name__ == '__main__':
             positive_sc, neutral_sc, negative_sc = recog_facial_img(img_fn)
             print img_fn
             print '\tpositive: %f\n\tneutral: %f\n\tnegative: %f' % (positive_sc, neutral_sc, negative_sc)
+
+            if positive_sc > negative_sc:
+                status = min(status+1, 3)
+            else:
+                status = max(status-1, 1)
+        
+        # Display the resulting frame
+        if status == 1:
+            cv2.imshow('frame', frame1)
+        elif status == 2:
+            cv2.imshow('frame', frame2)
+        elif status == 3:
+            cv2.imshow('frame', frame3)
+        # cv2.imshow('frame', frame)
 
     cap.release()
     cv2.destroyAllWindows()

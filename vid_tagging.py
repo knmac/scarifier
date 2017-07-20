@@ -1,9 +1,6 @@
 import os
 import glob
 from subprocess import Popen, STDOUT, PIPE
-import json
-import cv2
-import ipdb
 from main_handler import extract_frames, recog_visual_img
 
 VIDS_DIR = 'vids'
@@ -11,7 +8,7 @@ FRAMES_DIR = 'frames'
 FRAMES_TAG_DIR = 'frames_tag'
 FPS = '1'
 
-VID = os.path.join(VIDS_DIR, 'dontlookaway.mp4')
+VID = os.path.join(VIDS_DIR, 'clown.mp4')
 
 
 if __name__ == '__main__':
