@@ -17,15 +17,15 @@ FPS = '1'
 DURATION = 5
 
 
-def extract_frames(input_fn, output_dir):
+def extract_frames(input_fn, output_dir, fps):
     """ Extract frames from a given video file. Output is stored in output_dir.
     """
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     cmd = 'ffmpeg ' + \
             '-i ' + input_fn + \
-            ' -vf fps=' + FPS + \
-            ' ' + output_dir + '/frame%03d.jpg'
+            ' -vf fps=' + fps + \
+            ' ' + output_dir + '/frame%05d.jpg'
     sp = Popen(cmd.split(' '), stdout=PIPE)
     sp.communicate()
     return
@@ -35,8 +35,7 @@ def recog_visual_img(img_fn):
     sp = Popen('./visual_api_handler.sh ' + img_fn,
             shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
     out, err = sp.communicate()
-    print out
-    return 
+    return out 
 
 
 def recog_facial_img(img_fn):

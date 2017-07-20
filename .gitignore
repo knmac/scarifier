@@ -1,5 +1,7 @@
 .DS_Store
 *.swp
+*.pyc
 frames/
 facial_frames/
 vids/
+frames_tag/

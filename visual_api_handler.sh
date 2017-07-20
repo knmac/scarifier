@@ -6,6 +6,6 @@ VERSION="2016-05-20"
 IMG=$1
 
 
-curl -X POST \
+curl -sS -X POST \
     -F "images_file=@"$IMG \
     $URL"?api_key="$API_KEY"&version="$VERSION
