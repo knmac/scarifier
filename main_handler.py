@@ -17,6 +17,17 @@ FPS = '1'
 DURATION = 5
 
 
+osa_cmd_m = """
+osascript -e 'tell application "System Events" to keystroke "m" using {command down}'
+"""
+osa_a = """
+osascript -e 'tell application "System Events" to keystroke "a"'
+"""
+osa_s = """
+osascript -e 'tell application "System Events" to keystroke "s"'
+"""
+
+
 def extract_frames(input_fn, output_dir, fps):
     """ Extract frames from a given video file. Output is stored in output_dir.
     """
@@ -124,8 +135,10 @@ if __name__ == '__main__':
 
             if positive_sc > negative_sc:
                 status = min(status+1, 1)
+                os.system(osa_a)
             else:
                 status = max(status-1, -1)
+                os.system(osa_s)
         
         # Display the resulting frame
         if status == -1:
