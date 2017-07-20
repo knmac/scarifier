@@ -1,7 +1,11 @@
 import os
+import sys
 import glob
 from subprocess import Popen, STDOUT, PIPE
 import json
+import cv2
+import time
+import numpy as np
 import ipdb
 
 
@@ -77,11 +81,28 @@ def scarify():
 
 
 if __name__ == '__main__':
-    # demo pipeline
-    face_input = os.path.join(VIDS_DIR, 'face.mp4')
-    if TO_EXTRACT:
-        extract_frames(face_input, FRAMES_DIR)  # NOTE: this can be replaced by stream monitoring
-    recog_facial_seq(FRAMES_DIR)
-    scarify()
+    cap = cv2.VideoCapture(0)
+    prev_time = time.time()
+    duration = 5
 
+    while(True):
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+
+        # recognize after a duration
+        if time.time() - prev_time >= duration:
+            prev_time = time.time()
+            img_fn = os.path.join(FRAMES_DIR, str(prev_time)+'.jpg')
+            cv2.imwrite(img_fn, frame)
+            positive_sc, neutral_sc, negative_sc = recog_facial_img(img_fn)
+            print img_fn
+            print '\tpositive: %f\n\tneutral: %f\n\tnegative: %f' % (positive_sc, neutral_sc, negative_sc)
+
+        # Display the resulting frame
+        cv2.imshow('frame', frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
     print 'Done'
