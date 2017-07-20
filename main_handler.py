@@ -12,6 +12,8 @@ FPS = '1'
 
 
 def extract_frames(input_fn, output_dir):
+    """ Extract frames from a given video file. Output is stored in output_dir.
+    """
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     cmd = 'ffmpeg ' + \
@@ -24,6 +26,12 @@ def extract_frames(input_fn, output_dir):
 
 
 def recog_facial_img(img_fn):
+    """ Recognize facial expression from a given image file.
+    Return:
+        positive_sc: score of positive mood
+        neutral_sc: score of neutral mood
+        negative_sc: score of negative mood
+    """
     sp = Popen('./emo_api_handler.sh ' + img_fn,
             shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
     out, err = sp.communicate()
@@ -50,6 +58,9 @@ def recog_facial_img(img_fn):
 
 
 def recog_facial_seq(input_dir):
+    """ Recognize facial expression of multiple images insisde input_dir.
+    This calls recog_facial_img() for each image
+    """
     img_lst = glob.glob(os.path.join(input_dir, '*.jpg'))
     for img_fn in img_lst:
         positive_sc, neutral_sc, negative_sc = recog_facial_img(img_fn)
@@ -59,6 +70,8 @@ def recog_facial_seq(input_dir):
 
 
 def scarify():
+    """ Integrate facial expression and video adjusting.
+    """
     # TODO: implement
     return
 
