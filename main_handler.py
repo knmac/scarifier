@@ -13,6 +13,7 @@ TO_EXTRACT = True  # FIXME: turn on or off
 VIDS_DIR = 'vids'
 FRAMES_DIR = 'frames'
 FPS = '1'
+DURATION = 3
 
 
 def extract_frames(input_fn, output_dir):
@@ -83,14 +84,13 @@ def scarify():
 if __name__ == '__main__':
     cap = cv2.VideoCapture(0)
     prev_time = time.time()
-    duration = 5
 
     while(True):
         # Capture frame-by-frame
         ret, frame = cap.read()
 
         # recognize after a duration
-        if time.time() - prev_time >= duration:
+        if time.time() - prev_time >= DURATION:
             prev_time = time.time()
             img_fn = os.path.join(FRAMES_DIR, str(prev_time)+'.jpg')
             cv2.imwrite(img_fn, frame)
