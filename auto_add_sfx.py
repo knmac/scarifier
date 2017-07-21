@@ -32,7 +32,6 @@ if __name__ == '__main__':
         else:
             has_golf.append(0)
     
-    exit()
     shutil.copy(VID_IN, 'dummy_0.mp4')
     cnt = 0
     for i in range(1, N):
@@ -42,13 +41,15 @@ if __name__ == '__main__':
             fout = 'dummy_' + str(cnt) + '.mp4'
             offset = time.strftime('%H:%M:%S', time.gmtime(i))
             sfx = random.choice(SFX_LST)
-            print offset
+            print offset, sfx
 
             cmd = ['ffmpeg', '-i', fin, '-itsoffset', offset, '-i', sfx,
-                    '-map', '0:v', '-map', '1:a', '-c', 'copy',
+                    '-c:v', 'copy', '-c:a', 'aac', '-strict', 'experimental',
                     '-async', '1', fout]
-            ipdb.set_trace()
+            # ipdb.set_trace()
             sp = Popen(cmd, stdout=PIPE)
             out, err = sp.communicate()
+
+    shutil.copy('dummy_' + str(cnt) + '.mp4', VID_OUT)
 
     print 'Done'
