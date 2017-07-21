@@ -24,4 +24,9 @@ GitHub: https://github.com/knmac/scarifier
 ![workflow](res/movie_genie_workflow.png?raw=true "Worl Flow")
 
 
+While the film is playing, the emotion of the watcher is recognized by the Watson Facial Recognition API and categorized as either a negative or positive emotions. The movie player uses this data to change to content of the video. The film is pre-examined with the Watson Visual Recognition API to tag the content of the video to improve the quality of the changes. It uses the augmentation library to change the mood of the film using music and visual effects. The final product is a video which atmosphere changes based on the user data and content of the video. 
+
+
 ![candidate](res/candidate_appearance.png?raw=true "Candidate")
+
+This graph tracks the appearance of the candidate (the scary monster in this case). It uses the Watson Recognition API to analyze the content on the screen to make it easier to pin point where the editor could quickly increase the fear factor. 
