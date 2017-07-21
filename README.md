@@ -17,3 +17,6 @@ Link to Presentation: Coming soon
 Link to 3 minute pitch video: Coming soon
 
 GitHub: https://github.com/knmac/scarifier 
+
+# Workflow
+![workflow](movie_genie_workflow.png?raw=true "Worl Flow")
