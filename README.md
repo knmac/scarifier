@@ -1,6 +1,6 @@
-# Project Name: Scarifier
-
-- Challenge: #VideoComprehensionSolutions, IBM's 
+# Project Name: Movie Genie
+(IBM's BlueHack 2017)[https://hackdash.org/projects/5970c0c97a30a4526a1fe9a7]
+- Challenge: #VideoComprehensionSolutions
 - Team Name: Connected Cognition
 - Location: #Yorktown / #Poughkeepsie
 - Members:
