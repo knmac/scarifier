@@ -1,5 +1,6 @@
 # Movie Genie
-This is a project for [IBM's BlueHack 2017](https://hackdash.org/projects/5970c0c97a30a4526a1fe9a7).
+This is a project for [IBM's BlueHack 2017](http://www.bluehack.org).
+
 - Challenge: #VideoComprehensionSolutions
 - Team Name: Connected Cognition
 - Location: #Yorktown / #Poughkeepsie
@@ -9,6 +10,7 @@ This is a project for [IBM's BlueHack 2017](https://hackdash.org/projects/5970c0
   - Khoi-Nguyen Mac - Khoi-Nguyen.Mac@ibm.com
   - Pat Pataranutaporn - Pat.Pataranutaporn@ibm.com
   - German Abrevaya - german.abrevaya@ibm.com
+- Hack Dash: https://hackdash.org/projects/5970c0c97a30a4526a1fe9a7
   
 ![interface](res/interface.png?raw=true "Interface")
 
