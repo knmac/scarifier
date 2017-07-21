@@ -26,7 +26,9 @@ osascript -e 'tell application "System Events" to keystroke "d"'
 osa_s = """
 osascript -e 'tell application "System Events" to keystroke "s"'
 """
-
+osa_a = """
+osascript -e 'tell application "System Events" to keystroke "a"'
+"""
 
 def extract_frames(input_fn, output_dir, fps):
     """ Extract frames from a given video file. Output is stored in output_dir.
@@ -43,6 +45,8 @@ def extract_frames(input_fn, output_dir, fps):
 
 
 def recog_visual_img(img_fn):
+    """ Recognize visual information from an image
+    """
     sp = Popen('./visual_api_handler.sh ' + img_fn,
             shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
     out, err = sp.communicate()
@@ -93,14 +97,9 @@ def recog_facial_seq(input_dir):
     return
 
 
-def scarify():
-    """ Integrate facial expression and video adjusting.
+def main_show_cv():
+    """ Demo using open cv
     """
-    # TODO: implement
-    return
-
-
-def main_demo():
     cap = cv2.VideoCapture(0)
     # cap.set(3, 320)
     # cap.set(4, 240)
@@ -153,7 +152,9 @@ def main_demo():
     cv2.destroyAllWindows()
 
 
-def main():
+def main_send_event():
+    """ Send osascript as controlling event to movie player
+    """
     cap = cv2.VideoCapture(0)
     cap.set(3, 320)
     cap.set(4, 240)
@@ -180,12 +181,16 @@ def main():
             print img_fn
             print '\tpositive: %f\n\tneutral: %f\n\tnegative: %f' % (positive_sc, neutral_sc, negative_sc)
             
-            if positive_sc > negative_sc:
-                status = min(status+1, 1)
+            msc = max(positive_sc, neutral_sc, negative_sc)
+            if positive_sc == msc:
+                status = 1
                 os.system(osa_s)
-            else:
-                status = max(status-1, -1)
+            elif negative_sc == msc:
+                status = -1
                 os.system(osa_d)
+            else:
+                status = 0
+                os.system(osa_a)
 
             msg = img_fn + \
                 '\n  Current scaryness level: ' + str(status) + \
@@ -206,6 +211,6 @@ def main():
 
 
 if __name__ == '__main__':
-    # main_demo()
-    main()
+    # main_show_cv()
+    main_send_event()
     print 'Done'
