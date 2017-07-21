@@ -1,17 +1,16 @@
-Project Name: Scarifier
+# Project Name: Scarifier
 
-Challenge: #VideoComprehensionSolutions
+- Challenge: #VideoComprehensionSolutions
+- Team Name: Connected Cognition
+- Location: #Yorktown / #Poughkeepsie
+- Members:
+  - Vaisakhi Mishra - vaisakhi.mishra@ibm.com
+  - Charlotte Wright - Charlotte.Wright@ibm.com
+  - Khoi-Nguyen Mac - Khoi-Nguyen.Mac@ibm.com
+  - Pat Pataranutaporn - Pat.Pataranutaporn@ibm.com
+  - German Abrevaya - german.abrevaya@ibm.com
 
-Team Name: Connected Cognition
-
-Location: #Yorktown / #Poughkeepsie
-
-Vaisakhi Mishra - vaisakhi.mishra@ibm.com
-Charlotte Wright - Charlotte.Wright@ibm.com
-Khoi-Nguyen Mac - Khoi-Nguyen.Mac@ibm.com
-Pat Pataranutaporn - Pat.Pataranutaporn@ibm.com
-German Abrevaya - german.abrevaya@ibm.com
-
+# Description
 An emotion analysis based real time movie scene modifying video player. The current prototype would enhance audience experience of any horror movie or video by manipulating effects in the video according to the facial mood gestures of the audience.
 
 Link to Presentation: Coming soon
