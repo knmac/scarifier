@@ -188,17 +188,17 @@ def main():
                 os.system(osa_d)
 
             msg = img_fn + \
-                '\n\tCurrent scaryness level: ' + str(status) + \
-                '\n\tpositive: ' + str(positive_sc) + \
-                '\n\tneutral: ' + str(neutral_sc) + \
-                '\n\tnegative: ' + str(negative_sc)
+                '\n  Current scaryness level: ' + str(status) + \
+                '\n  positive: ' + str(positive_sc) + \
+                '\n  neutral: ' + str(neutral_sc) + \
+                '\n  negative: ' + str(negative_sc)
         
         # Display the resulting frame
         font = cv2.FONT_HERSHEY_SIMPLEX
         y0, dy = 20, 14
         for i, line in enumerate(msg.split('\n')):
             y = y0 + i*dy
-            cv2.putText(frame, line, (20, y), font, 0.5, (255, 255, 255), 1)
+            cv2.putText(frame, line, (350, y), font, 0.5, (255, 255, 255), 1)
         cv2.imshow('frame', frame)
 
     cap.release()
