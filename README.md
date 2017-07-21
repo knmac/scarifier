@@ -18,7 +18,9 @@ This is a project for [IBM's BlueHack 2017](http://www.bluehack.org).
 # Description
 An emotion analysis based real time movie scene modifying video player. The current prototype would enhance audience experience of any horror movie or video by manipulating effects in the video according to the facial mood gestures of the audience.
 
-Link to Presentation: Coming soon
+YOUTUBE LINK:https://youtu.be/-YdCxjJUEQQ
+
+Link to Presentation: https://youtu.be/-YdCxjJUEQQ
 
 Link to 3 minute pitch video: https://drive.google.com/open?id=0B_INX3BifvJoUV92SGNFN0Z2VGs
 
