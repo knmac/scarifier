@@ -16,6 +16,7 @@ This is a project for [IBM's BlueHack 2017](https://hackdash.org/projects/5970c0
 An emotion analysis based real time movie scene modifying video player. The current prototype would enhance audience experience of any horror movie or video by manipulating effects in the video according to the facial mood gestures of the audience.
 
 Link to Presentation: Coming soon
+
 Link to 3 minute pitch video: Coming soon
 
 GitHub: https://github.com/knmac/scarifier 
