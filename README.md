@@ -20,7 +20,9 @@ An emotion analysis based real time movie scene modifying video player. The curr
 
 Link to Presentation: Coming soon
 
-Link to 3 minute pitch video: Coming soon
+Link to 3 minute pitch video: https://drive.google.com/open?id=0B_INX3BifvJoUV92SGNFN0Z2VGs
+
+Link to Demo: https://www.youtube.com/watch?v=GNbztukrhgo
 
 GitHub: https://github.com/knmac/scarifier 
 
