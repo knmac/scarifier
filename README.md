@@ -11,6 +11,7 @@ This is a project for [IBM's BlueHack 2017](http://www.bluehack.org).
   - Pat Pataranutaporn - Pat.Pataranutaporn@ibm.com
   - German Abrevaya - german.abrevaya@ibm.com
 - Hack Dash: https://hackdash.org/projects/5970c0c97a30a4526a1fe9a7
+- Video Link: https://drive.google.com/drive/folders/0B_INX3BifvJoUV92SGNFN0Z2VGs
   
 ![interface](res/interface.png?raw=true "Interface")
 
