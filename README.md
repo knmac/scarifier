@@ -9,6 +9,8 @@
   - Khoi-Nguyen Mac - Khoi-Nguyen.Mac@ibm.com
   - Pat Pataranutaporn - Pat.Pataranutaporn@ibm.com
   - German Abrevaya - german.abrevaya@ibm.com
+  
+![interface](res/interface.png?raw=true "Interface")
 
 # Description
 An emotion analysis based real time movie scene modifying video player. The current prototype would enhance audience experience of any horror movie or video by manipulating effects in the video according to the facial mood gestures of the audience.
@@ -19,4 +21,4 @@ Link to 3 minute pitch video: Coming soon
 GitHub: https://github.com/knmac/scarifier 
 
 # Workflow
-![workflow](movie_genie_workflow.png?raw=true "Worl Flow")
+![workflow](res/movie_genie_workflow.png?raw=true "Worl Flow")
