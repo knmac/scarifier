@@ -8,7 +8,7 @@ FRAMES_DIR = 'frames'
 FRAMES_TAG_DIR = 'frames_tag'
 FPS = '1'
 
-VID = os.path.join(VIDS_DIR, 'clown.mp4')
+VID = os.path.join(VIDS_DIR, 'movie_original.mp4')
 
 
 if __name__ == '__main__':
