@@ -20,8 +20,8 @@ DURATION = 5
 osa_cmd_m = """
 osascript -e 'tell application "System Events" to keystroke "m" using {command down}'
 """
-osa_a = """
-osascript -e 'tell application "System Events" to keystroke "a"'
+osa_d = """
+osascript -e 'tell application "System Events" to keystroke "d"'
 """
 osa_s = """
 osascript -e 'tell application "System Events" to keystroke "s"'
@@ -100,7 +100,7 @@ def scarify():
     return
 
 
-if __name__ == '__main__':
+def main_demo():
     cap = cv2.VideoCapture(0)
     # cap.set(3, 320)
     # cap.set(4, 240)
@@ -135,10 +135,10 @@ if __name__ == '__main__':
 
             if positive_sc > negative_sc:
                 status = min(status+1, 1)
-                os.system(osa_a)
+                os.system(osa_s)
             else:
                 status = max(status-1, -1)
-                os.system(osa_s)
+                os.system(osa_d)
         
         # Display the resulting frame
         if status == -1:
@@ -151,4 +151,49 @@ if __name__ == '__main__':
 
     cap.release()
     cv2.destroyAllWindows()
+
+
+def main():
+    cap = cv2.VideoCapture(0)
+    cap.set(3, 320)
+    cap.set(4, 240)
+    prev_time = time.time()
+    
+    status = 0
+
+    while(True):
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+
+        # break event
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+        # recognizen facial expression after a duration
+        if time.time() - prev_time >= DURATION:
+            prev_time = time.time()
+            img_fn = os.path.join(FACIAL_FRAMES_DIR, str(prev_time)+'.jpg')
+            cv2.imwrite(img_fn, frame)
+
+            positive_sc, neutral_sc, negative_sc = recog_facial_img(img_fn)
+            print img_fn
+            print '\tpositive: %f\n\tneutral: %f\n\tnegative: %f' % (positive_sc, neutral_sc, negative_sc)
+
+            if positive_sc > negative_sc:
+                status = min(status+1, 1)
+                os.system(osa_s)
+            else:
+                status = max(status-1, -1)
+                os.system(osa_d)
+        
+        # Display the resulting frame
+        cv2.imshow('frame', frame)
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    # main_demo()
+    main()
     print 'Done'
