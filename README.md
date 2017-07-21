@@ -1,6 +1,6 @@
 # Project Name: Scarifier
 
-- Challenge: #VideoComprehensionSolutions
+- Challenge: #VideoComprehensionSolutions, IBM's 
 - Team Name: Connected Cognition
 - Location: #Yorktown / #Poughkeepsie
 - Members:
@@ -22,3 +22,6 @@ GitHub: https://github.com/knmac/scarifier
 
 # Workflow
 ![workflow](res/movie_genie_workflow.png?raw=true "Worl Flow")
+
+
+![candidate](res/candidate_appearance.png?raw=true "Candidate")
