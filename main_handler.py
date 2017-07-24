@@ -28,15 +28,16 @@ osa_a = """
 osascript -e 'tell application "System Events" to keystroke "a"'
 """
 
+
 def extract_frames(input_fn, output_dir, fps):
     """ Extract frames from a given video file. Output is stored in output_dir.
     """
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     cmd = 'ffmpeg ' + \
-            '-i ' + input_fn + \
-            ' -vf fps=' + fps + \
-            ' ' + output_dir + '/frame%05d.jpg'
+          '-i ' + input_fn + \
+          ' -vf fps=' + fps + \
+          ' ' + output_dir + '/frame%05d.jpg'
     sp = Popen(cmd.split(' '), stdout=PIPE)
     sp.communicate()
     return
@@ -46,7 +47,7 @@ def recog_visual_img(img_fn):
     """ Recognize visual information from an image
     """
     sp = Popen('./visual_api_handler.sh ' + img_fn,
-            shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
+               shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
     out, err = sp.communicate()
     return out 
 
@@ -59,9 +60,9 @@ def recog_facial_img(img_fn):
         negative_sc: score of negative mood
     """
     sp = Popen('./emo_api_handler.sh ' + img_fn,
-            shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
+               shell=True, stdout=PIPE, stderr=STDOUT, stdin=PIPE)
     out, err = sp.communicate()
-    
+
     # parse json results
     foo = json.loads(out)[0]
     res = foo[1]['Image']
@@ -102,7 +103,7 @@ def main_show_cv():
     # cap.set(3, 320)
     # cap.set(4, 240)
     prev_time = time.time()
-    
+
     vid1 = cv2.VideoCapture('vids/movie_lighter.mp4')
     vid2 = cv2.VideoCapture('vids/movie_original.mp4')
     vid3 = cv2.VideoCapture('vids/movie_scarrier.mp4')
@@ -136,7 +137,7 @@ def main_show_cv():
             else:
                 status = max(status-1, -1)
                 os.system(osa_d)
-        
+
         # Display the resulting frame
         if status == -1:
             cv2.imshow('frame', frame1)
@@ -157,7 +158,7 @@ def main_send_event():
     cap.set(3, 320)
     cap.set(4, 240)
     prev_time = time.time()
-    
+
     status = 0
     msg = ''
 
@@ -178,7 +179,7 @@ def main_send_event():
             positive_sc, neutral_sc, negative_sc = recog_facial_img(img_fn)
             print img_fn
             print '\tpositive: %f\n\tneutral: %f\n\tnegative: %f' % (positive_sc, neutral_sc, negative_sc)
-            
+
             msc = max(positive_sc, neutral_sc, negative_sc)
             if positive_sc == msc:
                 status = 1
@@ -195,7 +196,7 @@ def main_send_event():
                 '\n  positive: ' + str(positive_sc) + \
                 '\n  neutral: ' + str(neutral_sc) + \
                 '\n  negative: ' + str(negative_sc)
-        
+
         # Display the resulting frame
         font = cv2.FONT_HERSHEY_SIMPLEX
         y0, dy = 20, 14
