@@ -1,11 +1,9 @@
 import os
-import sys
 import glob
 from subprocess import Popen, STDOUT, PIPE
 import json
 import cv2
 import time
-import numpy as np
 import ipdb
 
 
