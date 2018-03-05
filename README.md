@@ -23,9 +23,8 @@ YOUTUBE LINK:https://youtu.be/-YdCxjJUEQQ
 Link to Presentation: https://youtu.be/-YdCxjJUEQQ
 
 Link to 3 minute pitch video: https://drive.google.com/open?id=0B_INX3BifvJoUV92SGNFN0Z2VGs
-
--Demo: https://www.youtube.com/watch?v=GNbztukrhgo
--Demo 2: https://youtu.be/Y3HMVxHbdFw
+- Demo1: https://www.youtube.com/watch?v=GNbztukrhgo
+- Demo2: https://youtu.be/Y3HMVxHbdFw
 
 GitHub: https://github.com/knmac/scarifier 
 
